@@ -324,7 +324,7 @@
     </div>
 
     <audio id="song" preload="auto">
-        <source src="https://world.execute.umstudio.top/world-execute-me-compressed.mp3" type="audio/mpeg">
+        <source src="bgm.mp3" type="audio/mpeg">
         您的浏览器不支持 audio 标签。
     </audio>
 
@@ -494,7 +494,7 @@
                 animationFrameId = requestAnimationFrame(update);
             }).catch(e => {
                 console.error("音频播放失败:", e);
-                overlay.innerHTML = `<span>错误：无法播放音频。</span><span>音频文件是否在同一文件夹中？</span>`;
+                overlay.innerHTML = `<span>错误：无法播放音频。</span><span>请确认 'bgm.mp3' 文件与此HTML文件在同一文件夹中。</span>`;
                 overlay.classList.remove('hidden');
             });
         }
@@ -514,7 +514,6 @@
         }
         overlay.addEventListener('click', startExperience, { once: true });
         
-        // MODIFIED function to accept custom typing speed
         function typeLine({ text, className = '', style = {}, onComplete = null, speed = 60 }) {
             const line = document.createElement('div');
             line.className = `line ${className}`;
@@ -535,7 +534,7 @@
                     cursor.remove();
                     if (onComplete) onComplete();
                 }
-            }, speed); // Use the speed parameter here
+            }, speed);
         }
 
         function showEmphasis({ text, className = '', onComplete = null }) {
